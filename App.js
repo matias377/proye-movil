@@ -1,12 +1,50 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import login from './screens/login';
+import mostrador from './screens/mostrador';
+import mesas from './screens/mesas';
 
 export default function App() {
+
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="login"
+          component={login}
+          options={{
+            title: 'Inicio',
+            headerTitleAlign: "center",
+            headerStyle: { backgroundColor: "board" },
+            headerTintColor: "white",
+          }}
+        />
+        <Stack.Screen
+          name="mostrador"
+          component={mostrador}
+          options={{
+            title: 'Mostrador',
+            headerTitleAlign: "left",
+            headerStyle: { backgroundColor: "board" },
+            headerTintColor: "white",
+          }}
+        />
+        <Stack.Screen
+          name="mesas"
+          component={mesas}
+          options={{
+            title: 'Mesas',
+            headerTitleAlign: "center",
+            headerStyle: { backgroundColor: "board" },
+            headerTintColor: "white",
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
